@@ -20,7 +20,6 @@ namespace ConsoleMusicPlayer
             {
                 case UserChoice.TogglePlayPause:
                     {
-
                         if (_player.playState == WMPPlayState.wmppsPlaying)
                         {
                             PauseSong();
@@ -64,19 +63,18 @@ namespace ConsoleMusicPlayer
             int volume;
             if (!Int32.TryParse(Console.ReadLine(), out volume))
             {
-                _frontend.PrintErrorMessage("Input was not a number, please give a number between 0 - 100");
+                _frontend.PrintStringColor("Input was not a number, please give a number between 0 - 100");
 
                 return ChangeVolume();
             }
             if (volume < 0 || volume > 100)
             {
-                _frontend.PrintErrorMessage("Input was not between 0-100, please give a number between 0-100");
+                _frontend.PrintStringColor("Input was not between 0-100, please give a number between 0-100");
 
                 return ChangeVolume();
             }
             return volume;
         }
-
 
         private void ToggleMute()
         {
@@ -96,7 +94,8 @@ namespace ConsoleMusicPlayer
             }
             else
             {
-                _frontend.PrintErrorMessage("Can't slow down more");
+                Thread.Sleep(2000);
+                _frontend.PrintStringColor("Can't slow down more");
             }
         }
     }

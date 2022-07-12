@@ -3,7 +3,8 @@ using ConsoleMusicPlayer;
 using WMPLib;
 
 WindowsMediaPlayer player = new WindowsMediaPlayer();
-Frontend frontend = new Frontend(player);
+AsciiArt ascii = new AsciiArt();
+Frontend frontend = new Frontend(player, ascii);
 Backend backend = new Backend(player, frontend);
 
 string filename = frontend.GetUserFile();
